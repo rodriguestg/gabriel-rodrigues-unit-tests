@@ -11,8 +11,22 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {
-  
+const average = (numeros) => {
+  let somatorio = 0;
+  for (let i = 0; i < numeros.length; i += 1) {
+    if (typeof numeros[i] !== 'number') {
+      return undefined;
+    }
+  somatorio += numeros[i];
+  }
+  const media = somatorio / numeros.length;
+  if (Number.isNaN(media) === true) {
+    return undefined;
+  }
+  const mediaArredondada = Math.round(media);
+  return mediaArredondada;
 };
+
+console.log(average([1, 2, 3, '4', 5]));
 
 module.exports = average;
