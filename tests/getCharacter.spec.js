@@ -43,13 +43,39 @@ Retorno:
 
 describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
   it('Verifica se a função `getCharacter` retorna o objeto do personagem corretamente.', () => {
-    fail('Teste vazio!');
+    // fail('Teste vazio!');
     // ESCREVA SEUS TESTES ABAIXO:
     // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
+    expect(getCharacter()).toBeUndefined();
     // Teste se a função retorna o objeto correto para o parâmetro 'Arya',
+    const nomeArya = getCharacter('arya');
+    expect(nomeArya).toEqual({
+      name: 'Arya Stark',
+      class: 'Rogue',
+      phrases: ['Not today', 'A girl has no name.'],
+    });
     // Teste se a função retorna o objeto correto para o parâmetro 'Brienne',
+    const nomeBrienne = getCharacter('brienne');
+    expect(nomeBrienne).toEqual({
+      name: 'Brienne Tarth',
+      class: 'Knight',
+      phrases: ['Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.'],
+    });
     // Teste se a função retorna o objeto correto para o parâmetro 'Melissandre',
+    const nomeMelissandre = getCharacter('melissandre');
+    expect(nomeMelissandre).toEqual({
+      name: 'Melissandre',
+      class: 'Necromancer',
+      phrases: ['Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.'],
+    });
     // Teste se o parâmetro não é Case Sensitive, ou seja, independente de conter letras maiúsculas ou minúsculas retorna o mesmo objeto relativo a ele.
+    const nomeMaiusculo = getCharacter('MELISSANDRE');
+    expect(nomeMaiusculo).toEqual({
+      name: 'Melissandre',
+      class: 'Necromancer',
+      phrases: ['Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.'],
+    });
     // Teste se ao passar um nome que não está na tabela, a função retorna undefined.
+    expect(getCharacter('Gabriel')).toBeUndefined();
   });
 });
